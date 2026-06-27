@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Asa 💕</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Envelope Screen -->
+    <div id="envelopeScreen" class="screen active">
+        <div class="envelope-container">
+            <div class="envelope">
+                <div class="envelope-back"></div>
+                <div class="envelope-front"></div>
+                <div class="envelope-flap"></div>
+                <div class="wax-seal" id="waxSeal">
+                    <div class="wax-seal-inner"></div>
+                </div>
+                <div class="bubble-text">
+                    <span>open me</span>
+                </div>
+            </div>
+        </div>
+        <div class="stars-background">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+        </div>
+    </div>
+
+    <!-- Letter Screen -->
+    <div id="letterScreen" class="screen">
+        <button class="close-letter" id="closeLetterBtn">✕</button>
+        <div class="letter-container">
+            <div class="letter">
+                <div class="letter-content">
+                    <p>Dear Asa,</p>
+                    <p>Happy birthday to the love of my life, (if everything went as planned, you're hopefully seeing this at 12 am) so if you are seeing this at 12, I hope you have the most amazing birthday, I love you so much, I can't wait to see you later and give you all the love and kisses.&lt;3</p>
+                    <p>If you're not seeing this at 12, I hope you're having an amazing day, and I still can't wait to see your handsome face later.</p>
+                    <p>I hope you know how much I love and cherish you, I was blessed to have you in my life as my friend and now I'm even more blessed to call you mine. You're an amazing person inside and out and I truly couldn't ask for someone better, you make me the happiest I've ever been and I can't wait to spend my life with you.</p>
+                    <p>Happy birthday, my love, this day will always be my favorite because it's why I have you now, and I will never let you go.</p>
+                    <p class="signature">With all my love,<br>Your love 💕</p>
+                </div>
+                <div class="hearts-decoration">
+                    <span class="heart">♥</span>
+                    <span class="heart">♥</span>
+                    <span class="heart">♥</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Screen -->
+    <div id="menuScreen" class="screen">
+        <div class="menu-container">
+            <div class="menu-options">
+                <div class="menu-item" id="treasureHuntBtn">
+                    <h3>Treasure Hunt</h3>
+                    <p>a small treasure hunt with a prize at the end &lt;3</p>
+                </div>
+                <div class="menu-item" id="quizBtn">
+                    <h3>Quiz &lt;3</h3>
+                    <p>A quiz for you, to show you how much I love you &lt;3</p>
+                </div>
+                <div class="menu-item" id="galleryBtn">
+                    <h3>Gallery</h3>
+                    <p>Memories we've made together ✨</p>
+                </div>
+                <div class="menu-item" id="artBtn">
+                    <h3>Art Area</h3>
+                    <p>Express your creativity 🎨</p>
+                </div>
+                <div class="menu-item" id="messageBtn">
+                    <h3>Message Area</h3>
+                    <p>Leave me a message 💌</p>
+                </div>
+            </div>
+        </div>
+        <div class="background-decoration">
+            <span class="heart">♥</span>
+            <span class="star">★</span>
+            <span class="heart">♥</span>
+            <span class="star">★</span>
+        </div>
+    </div>
+
+    <!-- Treasure Hunt Screen -->
+    <div id="treasureHuntScreen" class="screen">
+        <button class="back-btn" id="backFromTreasureBtn">← Back</button>
+        <div class="treasure-hunt-container">
+            <h2>Treasure Hunt 🗝️</h2>
+            <div class="puzzle-container">
+                <div class="puzzle-grid" id="puzzleGrid"></div>
+            </div>
+            <p class="hint">Arrange the pieces to form a heart shape!</p>
+        </div>
+    </div>
+
+    <!-- Quiz Screen -->
+    <div id="quizScreen" class="screen">
+        <button class="back-btn" id="backFromQuizBtn">← Back</button>
+        <div class="quiz-container">
+            <h2>Quiz &lt;3</h2>
+            <div class="quiz-content">
+                <div class="question-counter">
+                    <span id="currentQuestion">1</span> / <span id="totalQuestions">10</span>
+                </div>
+                <p id="questionText" class="question"></p>
+                <div class="quiz-buttons">
+                    <button class="quiz-option" data-answer="yes">Yes</button>
+                    <button class="quiz-option" data-answer="no">No</button>
+                </div>
+                <div class="quiz-progress">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Screen -->
+    <div id="galleryScreen" class="screen">
+        <button class="back-btn" id="backFromGalleryBtn">← Back</button>
+        <div class="gallery-container">
+            <h2>Gallery ✨</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">🖼️<br>Photo Spot 1</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">🖼️<br>Photo Spot 2</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">🖼️<br>Photo Spot 3</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">🖼️<br>Photo Spot 4</div>
+                </div>
+            </div>
+            <p class="gallery-note">You can add your favorite photos here! 📸</p>
+        </div>
+    </div>
+
+    <!-- Art Area Screen -->
+    <div id="artScreen" class="screen">
+        <button class="back-btn" id="backFromArtBtn">← Back</button>
+        <div class="art-container">
+            <h2>Art Area 🎨</h2>
+            <div class="art-tools">
+                <button class="art-tool" id="penTool">✏️ Pen</button>
+                <button class="art-tool" id="eraserTool">🧹 Eraser</button>
+                <input type="color" id="colorPicker" value="#c084d0" title="Pick color">
+                <button class="art-tool" id="clearCanvas">🗑️ Clear</button>
+            </div>
+            <canvas id="artCanvas"></canvas>
+        </div>
+    </div>
+
+    <!-- Message Area Screen -->
+    <div id="messageScreen" class="screen">
+        <button class="back-btn" id="backFromMessageBtn">← Back</button>
+        <div class="message-container">
+            <h2>Message Area 💌</h2>
+            <textarea id="messageInput" placeholder="Write me a message, handsome... 💕" maxlength="500"></textarea>
+            <button class="submit-btn" id="submitMessageBtn">Send Message</button>
+            <div class="messages-display" id="messagesDisplay"></div>
+        </div>
+    </div>
+
+    <!-- Popup Notifications -->
+    <div id="popup" class="popup"></div>
+
+    <script src="script.js"><\/script>
+</body>
+</html>
