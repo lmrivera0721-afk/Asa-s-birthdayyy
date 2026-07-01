@@ -32,6 +32,32 @@ body {
     display: flex;
 }
 
+/* Envelope Icon Button */
+.envelope-icon-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #c084d0;
+    border: 3px solid #fff;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 999;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(192, 132, 208, 0.4);
+}
+
+.envelope-icon-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(192, 132, 208, 0.6);
+}
+
+.envelope-icon-btn:active {
+    transform: scale(0.95);
+}
+
 /* Envelope Screen */
 #envelopeScreen {
     flex-direction: column;
@@ -796,5 +822,11 @@ body {
 
     #artCanvas {
         width: 100% !important;
+    }
+
+    .envelope-icon-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
     }
 }
