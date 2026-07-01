@@ -16,7 +16,8 @@ let currentQuestionIndex = 0;
 let quizCorrect = 0;
 
 // Initialize
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Page loaded, initializing...');
     initializeEventListeners();
     initializeCanvas();
     initializePuzzle();
@@ -24,107 +25,158 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Screen Navigation
 function showScreen(screenId) {
-    document.querySelectorAll('.screen').forEach(screen => {
+    document.querySelectorAll('.screen').forEach(function(screen) {
         screen.classList.remove('active');
     });
     document.getElementById(screenId).classList.add('active');
 }
 
 function initializeEventListeners() {
+    console.log('Setting up event listeners...');
+    
     // Envelope
     const waxSeal = document.getElementById('waxSeal');
     const envelope = document.querySelector('.envelope');
     
-    waxSeal.addEventListener('click', (e) => {
-        e.stopPropagation();
-        envelope.classList.add('open');
-        setTimeout(() => {
-            showScreen('letterScreen');
-        }, 600);
-    });
+    if (waxSeal && envelope) {
+        waxSeal.addEventListener('click', function(e) {
+            console.log('Wax seal clicked!');
+            e.stopPropagation();
+            envelope.classList.add('open');
+            setTimeout(function() {
+                showScreen('letterScreen');
+            }, 600);
+        });
+    }
 
     // Letter
-    document.getElementById('closeLetterBtn').addEventListener('click', () => {
-        showScreen('menuScreen');
-    });
+    const closeBtn = document.getElementById('closeLetterBtn');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            showScreen('menuScreen');
+        });
+    }
 
     // Menu Items
-    document.getElementById('treasureHuntBtn').addEventListener('click', () => {
-        showScreen('treasureHuntScreen');
-    });
+    const treasureBtn = document.getElementById('treasureHuntBtn');
+    if (treasureBtn) {
+        treasureBtn.addEventListener('click', function() {
+            showScreen('treasureHuntScreen');
+        });
+    }
 
-    document.getElementById('quizBtn').addEventListener('click', () => {
-        startQuiz();
-        showScreen('quizScreen');
-    });
+    const quizBtn = document.getElementById('quizBtn');
+    if (quizBtn) {
+        quizBtn.addEventListener('click', function() {
+            startQuiz();
+            showScreen('quizScreen');
+        });
+    }
 
-    document.getElementById('galleryBtn').addEventListener('click', () => {
-        showScreen('galleryScreen');
-    });
+    const galleryBtn = document.getElementById('galleryBtn');
+    if (galleryBtn) {
+        galleryBtn.addEventListener('click', function() {
+            showScreen('galleryScreen');
+        });
+    }
 
-    document.getElementById('artBtn').addEventListener('click', () => {
-        showScreen('artScreen');
-        resizeCanvas();
-    });
+    const artBtn = document.getElementById('artBtn');
+    if (artBtn) {
+        artBtn.addEventListener('click', function() {
+            showScreen('artScreen');
+            resizeCanvas();
+        });
+    }
 
-    document.getElementById('messageBtn').addEventListener('click', () => {
-        showScreen('messageScreen');
-        loadMessages();
-    });
+    const messageBtn = document.getElementById('messageBtn');
+    if (messageBtn) {
+        messageBtn.addEventListener('click', function() {
+            showScreen('messageScreen');
+            loadMessages();
+        });
+    }
 
     // Back Buttons
-    document.getElementById('backFromTreasureBtn').addEventListener('click', () => {
-        showScreen('menuScreen');
-    });
+    const backTreasure = document.getElementById('backFromTreasureBtn');
+    if (backTreasure) {
+        backTreasure.addEventListener('click', function() {
+            showScreen('menuScreen');
+        });
+    }
 
-    document.getElementById('backFromQuizBtn').addEventListener('click', () => {
-        showScreen('menuScreen');
-    });
+    const backQuiz = document.getElementById('backFromQuizBtn');
+    if (backQuiz) {
+        backQuiz.addEventListener('click', function() {
+            showScreen('menuScreen');
+        });
+    }
 
-    document.getElementById('backFromGalleryBtn').addEventListener('click', () => {
-        showScreen('menuScreen');
-    });
+    const backGallery = document.getElementById('backFromGalleryBtn');
+    if (backGallery) {
+        backGallery.addEventListener('click', function() {
+            showScreen('menuScreen');
+        });
+    }
 
-    document.getElementById('backFromArtBtn').addEventListener('click', () => {
-        showScreen('menuScreen');
-    });
+    const backArt = document.getElementById('backFromArtBtn');
+    if (backArt) {
+        backArt.addEventListener('click', function() {
+            showScreen('menuScreen');
+        });
+    }
 
-    document.getElementById('backFromMessageBtn').addEventListener('click', () => {
-        showScreen('menuScreen');
-    });
+    const backMessage = document.getElementById('backFromMessageBtn');
+    if (backMessage) {
+        backMessage.addEventListener('click', function() {
+            showScreen('menuScreen');
+        });
+    }
 
     // Quiz Options
-    document.querySelectorAll('.quiz-option').forEach(btn => {
-        btn.addEventListener('click', (e) => {
+    document.querySelectorAll('.quiz-option').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
             const answer = e.target.getAttribute('data-answer');
             handleQuizAnswer(answer);
         });
     });
 
     // Message Submit
-    document.getElementById('submitMessageBtn').addEventListener('click', submitMessage);
+    const submitBtn = document.getElementById('submitMessageBtn');
+    if (submitBtn) {
+        submitBtn.addEventListener('click', submitMessage);
+    }
 
     // Art Tools
-    document.getElementById('penTool').addEventListener('click', () => {
-        setDrawingMode('pen');
-    });
+    const penTool = document.getElementById('penTool');
+    if (penTool) {
+        penTool.addEventListener('click', function() {
+            setDrawingMode('pen');
+        });
+    }
 
-    document.getElementById('eraserTool').addEventListener('click', () => {
-        setDrawingMode('eraser');
-    });
+    const eraserTool = document.getElementById('eraserTool');
+    if (eraserTool) {
+        eraserTool.addEventListener('click', function() {
+            setDrawingMode('eraser');
+        });
+    }
 
-    document.getElementById('clearCanvas').addEventListener('click', () => {
-        clearCanvas();
-    });
+    const clearBtn = document.getElementById('clearCanvas');
+    if (clearBtn) {
+        clearBtn.addEventListener('click', function() {
+            clearCanvas();
+        });
+    }
 }
 
 // Popup Function
-function showPopup(message, type = 'normal') {
+function showPopup(message, type) {
+    if (!type) type = 'normal';
     const popup = document.getElementById('popup');
-    popup.innerHTML = `<p>${message}</p>`;
-    popup.className = `popup show ${type}`;
+    popup.innerHTML = '<p>' + message + '</p>';
+    popup.className = 'popup show ' + type;
     
-    setTimeout(() => {
+    setTimeout(function() {
         popup.classList.remove('show');
     }, 2000);
 }
@@ -159,13 +211,13 @@ function handleQuizAnswer(answer) {
     currentQuestionIndex++;
 
     if (currentQuestionIndex < quizQuestions.length) {
-        setTimeout(() => {
+        setTimeout(function() {
             loadQuestion();
         }, 2000);
     } else {
-        setTimeout(() => {
-            showPopup(`Quiz Complete! You got ${quizCorrect}/10 correct! I love you! 💕`, 'success');
-            setTimeout(() => {
+        setTimeout(function() {
+            showPopup('Quiz Complete! You got ' + quizCorrect + '/10 correct! I love you! 💕', 'success');
+            setTimeout(function() {
                 showScreen('menuScreen');
             }, 2000);
         }, 2000);
@@ -177,8 +229,6 @@ let puzzleState = [];
 let correctPositions = [];
 
 function initializePuzzle() {
-    // Create a heart shape pattern (positions where pieces should be)
-    // 4x4 grid with heart shape
     correctPositions = [
         false, true, true, false,
         true, true, true, true,
@@ -186,16 +236,16 @@ function initializePuzzle() {
         true, false, false, true
     ];
 
-    // Shuffle the puzzle pieces
     const pieceIndices = [];
     for (let i = 0; i < 16; i++) {
         pieceIndices.push(i);
     }
 
-    // Fisher-Yates shuffle
     for (let i = pieceIndices.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [pieceIndices[i], pieceIndices[j]] = [pieceIndices[j], pieceIndices[i]];
+        const temp = pieceIndices[i];
+        pieceIndices[i] = pieceIndices[j];
+        pieceIndices[j] = temp;
     }
 
     createPuzzleGrid(pieceIndices);
@@ -206,7 +256,7 @@ function createPuzzleGrid(order) {
     grid.innerHTML = '';
     puzzleState = order.slice();
 
-    order.forEach((index, position) => {
+    order.forEach(function(index, position) {
         const piece = document.createElement('div');
         piece.className = 'puzzle-piece';
         piece.textContent = position + 1;
@@ -219,7 +269,9 @@ function createPuzzleGrid(order) {
         piece.addEventListener('dragover', handleDragOver);
         piece.addEventListener('drop', handleDrop);
         piece.addEventListener('dragend', handleDragEnd);
-        piece.addEventListener('click', () => handlePuzzleClick(position));
+        piece.addEventListener('click', function() {
+            handlePuzzleClick(position);
+        });
 
         grid.appendChild(piece);
     });
@@ -251,11 +303,9 @@ function handleDragEnd(e) {
 function handlePuzzleClick(position) {
     moveCount++;
     
-    // Every other move (2nd, 4th, 6th, etc.)
     if (moveCount % 2 === 0) {
         const question = prompt("Answer this question:\n\nWhat's my favorite thing about you?");
         if (question !== null) {
-            // For demo purposes, any answer works
             showPopup("Congratulations! you've earned a kiss!", 'success');
         }
     }
@@ -267,12 +317,13 @@ function swapPuzzlePieces(piece1, piece2) {
     const pos1 = piece1.dataset.gridPosition;
     const pos2 = piece2.dataset.gridPosition;
 
-    [puzzleState[pos1], puzzleState[pos2]] = [puzzleState[pos2], puzzleState[pos1]];
+    const temp = puzzleState[pos1];
+    puzzleState[pos1] = puzzleState[pos2];
+    puzzleState[pos2] = temp;
 
-    // Swap visual content
-    const temp = piece1.textContent;
+    const tempText = piece1.textContent;
     piece1.textContent = piece2.textContent;
-    piece2.textContent = temp;
+    piece2.textContent = tempText;
 
     moveCount++;
     
@@ -287,46 +338,45 @@ function swapPuzzlePieces(piece1, piece2) {
 }
 
 function checkPuzzleCompletion() {
-    let isComplete = true;
     const pieces = document.querySelectorAll('.puzzle-piece');
     
-    pieces.forEach((piece, index) => {
+    pieces.forEach(function(piece, index) {
         const correctPos = correctPositions[index];
         if (correctPos) {
             piece.classList.add('correct');
             piece.draggable = false;
         } else {
             piece.classList.remove('correct');
-            if (!piece.classList.contains('correct')) {
-                isComplete = false;
-            }
         }
     });
 
-    // Check if arrangement is correct
     let allCorrect = true;
-    pieces.forEach((piece, index) => {
+    pieces.forEach(function(piece, index) {
         if (correctPositions[index] && !piece.classList.contains('correct')) {
             allCorrect = false;
         }
     });
 
-    if (allCorrect && pieces.every(p => p.classList.contains('correct'))) {
+    if (allCorrect) {
         showPopup("Congratulations! you solved the puzzle! come find me for a clue on your treasure hunt!", 'success');
     }
 }
 
 // Canvas / Drawing Functions
-let canvas, ctx;
+let canvas = null;
+let ctx = null;
 let isDrawing = false;
 let drawingMode = 'pen';
 
 function initializeCanvas() {
     canvas = document.getElementById('artCanvas');
-    ctx = canvas.getContext('2d');
+    if (canvas) {
+        ctx = canvas.getContext('2d');
+    }
 }
 
 function resizeCanvas() {
+    if (!canvas) return;
     const container = document.querySelector('.art-container');
     canvas.width = container.offsetWidth - 60;
     canvas.height = 400;
@@ -334,7 +384,7 @@ function resizeCanvas() {
 
 function setDrawingMode(mode) {
     drawingMode = mode;
-    document.querySelectorAll('.art-tool').forEach(tool => {
+    document.querySelectorAll('.art-tool').forEach(function(tool) {
         tool.classList.remove('active');
     });
     if (mode === 'pen') {
@@ -345,15 +395,20 @@ function setDrawingMode(mode) {
 }
 
 function clearCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (ctx && canvas) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
 }
 
-canvas.addEventListener('mousedown', startDrawing);
-canvas.addEventListener('mousemove', draw);
-canvas.addEventListener('mouseup', stopDrawing);
-canvas.addEventListener('mouseout', stopDrawing);
+if (canvas) {
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseout', stopDrawing);
+}
 
 function startDrawing(e) {
+    if (!canvas || !ctx) return;
     isDrawing = true;
     const rect = canvas.getBoundingClientRect();
     ctx.beginPath();
@@ -361,7 +416,7 @@ function startDrawing(e) {
 }
 
 function draw(e) {
-    if (!isDrawing) return;
+    if (!isDrawing || !canvas || !ctx) return;
 
     const rect = canvas.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -397,7 +452,7 @@ function submitMessage() {
         return;
     }
 
-    const messages = JSON.parse(localStorage.getItem('birthdayMessages')) || [];
+    let messages = JSON.parse(localStorage.getItem('birthdayMessages')) || [];
     messages.push({
         text: message,
         timestamp: new Date().toLocaleString()
@@ -412,7 +467,7 @@ function submitMessage() {
 
 function loadMessages() {
     const messagesDisplay = document.getElementById('messagesDisplay');
-    const messages = JSON.parse(localStorage.getItem('birthdayMessages')) || [];
+    let messages = JSON.parse(localStorage.getItem('birthdayMessages')) || [];
 
     messagesDisplay.innerHTML = '';
 
@@ -421,13 +476,10 @@ function loadMessages() {
         return;
     }
 
-    messages.forEach(msg => {
+    messages.forEach(function(msg) {
         const messageBox = document.createElement('div');
         messageBox.className = 'message-box';
-        messageBox.innerHTML = `
-            <p><strong>${msg.timestamp}</strong></p>
-            <p>${msg.text}</p>
-        `;
+        messageBox.innerHTML = '<p><strong>' + msg.timestamp + '</strong></p><p>' + msg.text + '</p>';
         messagesDisplay.appendChild(messageBox);
     });
 
@@ -435,28 +487,30 @@ function loadMessages() {
 }
 
 // Add touch support for mobile
-canvas.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    const touch = e.touches[0];
-    const mouseEvent = new MouseEvent('mousedown', {
-        clientX: touch.clientX,
-        clientY: touch.clientY
+if (canvas) {
+    canvas.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const mouseEvent = new MouseEvent('mousedown', {
+            clientX: touch.clientX,
+            clientY: touch.clientY
+        });
+        canvas.dispatchEvent(mouseEvent);
     });
-    canvas.dispatchEvent(mouseEvent);
-});
 
-canvas.addEventListener('touchmove', (e) => {
-    e.preventDefault();
-    const touch = e.touches[0];
-    const mouseEvent = new MouseEvent('mousemove', {
-        clientX: touch.clientX,
-        clientY: touch.clientY
+    canvas.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const mouseEvent = new MouseEvent('mousemove', {
+            clientX: touch.clientX,
+            clientY: touch.clientY
+        });
+        canvas.dispatchEvent(mouseEvent);
     });
-    canvas.dispatchEvent(mouseEvent);
-});
 
-canvas.addEventListener('touchend', (e) => {
-    e.preventDefault();
-    const mouseEvent = new MouseEvent('mouseup', {});
-    canvas.dispatchEvent(mouseEvent);
-});
+    canvas.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        const mouseEvent = new MouseEvent('mouseup', {});
+        canvas.dispatchEvent(mouseEvent);
+    });
+}
