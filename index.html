@@ -5,57 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Asa 💕</title>
     <link rel="stylesheet" href="styles.css">
-    <script>
-        function openLetter() {
-            document.querySelector('.envelope').classList.add('open');
-            setTimeout(function() {
-                document.getElementById('envelopeScreen').style.display = 'none';
-                document.getElementById('letterScreen').style.display = 'flex';
-            }, 600);
-        }
-        
-        function closeLetter() {
-            document.getElementById('letterScreen').style.display = 'none';
-            document.getElementById('menuScreen').style.display = 'flex';
-            document.querySelector('.envelope').classList.remove('open');
-        }
-        
-        function goToMenu() {
-            document.getElementById('envelopeScreen').style.display = 'none';
-            document.getElementById('letterScreen').style.display = 'none';
-            document.getElementById('menuScreen').style.display = 'flex';
-        }
-        
-        function openTreasure() {
-            document.getElementById('menuScreen').style.display = 'none';
-            document.getElementById('treasureHuntScreen').style.display = 'flex';
-        }
-        
-        function openQuiz() {
-            document.getElementById('menuScreen').style.display = 'none';
-            document.getElementById('quizScreen').style.display = 'flex';
-        }
-        
-        function openGallery() {
-            document.getElementById('menuScreen').style.display = 'none';
-            document.getElementById('galleryScreen').style.display = 'flex';
-        }
-        
-        function openArt() {
-            document.getElementById('menuScreen').style.display = 'none';
-            document.getElementById('artScreen').style.display = 'flex';
-        }
-        
-        function openMessage() {
-            document.getElementById('menuScreen').style.display = 'none';
-            document.getElementById('messageScreen').style.display = 'flex';
-        }
-        
-        function backToMenu(fromScreen) {
-            document.getElementById(fromScreen).style.display = 'none';
-            document.getElementById('menuScreen').style.display = 'flex';
-        }
-    </script>
 </head>
 <body>
     <!-- Envelope Screen -->
@@ -65,11 +14,11 @@
                 <div class="envelope-back"></div>
                 <div class="envelope-front"></div>
                 <div class="envelope-flap"></div>
-                <div class="wax-seal" onclick="openLetter()">
+                <div class="wax-seal" onclick="alert('Clicked!'); document.querySelector('.envelope').classList.add('open'); setTimeout(function() { document.getElementById('envelopeScreen').style.display = 'none'; document.getElementById('letterScreen').style.display = 'flex'; }, 600);">
                     <div class="wax-seal-inner"></div>
                 </div>
                 <div class="bubble-text">
-                    <span>open me</span>
+                    <span>Open me!</span>
                 </div>
             </div>
         </div>
@@ -84,7 +33,7 @@
 
     <!-- Letter Screen -->
     <div id="letterScreen" class="screen">
-        <button class="close-letter" onclick="closeLetter()">✕</button>
+        <button class="close-letter" onclick="document.getElementById('letterScreen').style.display = 'none'; document.getElementById('menuScreen').style.display = 'flex'; document.querySelector('.envelope').classList.remove('open');">✕</button>
         <div class="letter-container">
             <div class="letter">
                 <div class="letter-content">
@@ -108,23 +57,23 @@
     <div id="menuScreen" class="screen">
         <div class="menu-container">
             <div class="menu-options">
-                <div class="menu-item" onclick="openTreasure()">
+                <div class="menu-item" onclick="document.getElementById('menuScreen').style.display = 'none'; document.getElementById('treasureHuntScreen').style.display = 'flex';">
                     <h3>Treasure Hunt</h3>
                     <p>a small treasure hunt with a prize at the end &lt;3</p>
                 </div>
-                <div class="menu-item" onclick="openQuiz()">
+                <div class="menu-item" onclick="document.getElementById('menuScreen').style.display = 'none'; document.getElementById('quizScreen').style.display = 'flex';">
                     <h3>Quiz &lt;3</h3>
                     <p>A quiz for you, to show you how much I love you &lt;3</p>
                 </div>
-                <div class="menu-item" onclick="openGallery()">
+                <div class="menu-item" onclick="document.getElementById('menuScreen').style.display = 'none'; document.getElementById('galleryScreen').style.display = 'flex';">
                     <h3>Gallery</h3>
                     <p>Memories we've made together ✨</p>
                 </div>
-                <div class="menu-item" onclick="openArt()">
+                <div class="menu-item" onclick="document.getElementById('menuScreen').style.display = 'none'; document.getElementById('artScreen').style.display = 'flex';">
                     <h3>Art Area</h3>
                     <p>Express your creativity 🎨</p>
                 </div>
-                <div class="menu-item" onclick="openMessage()">
+                <div class="menu-item" onclick="document.getElementById('menuScreen').style.display = 'none'; document.getElementById('messageScreen').style.display = 'flex';">
                     <h3>Message Area</h3>
                     <p>Leave me a message 💌</p>
                 </div>
@@ -140,30 +89,25 @@
 
     <!-- Treasure Hunt Screen -->
     <div id="treasureHuntScreen" class="screen">
-        <button class="back-btn" onclick="backToMenu('treasureHuntScreen')">← Back</button>
+        <button class="back-btn" onclick="document.getElementById('treasureHuntScreen').style.display = 'none'; document.getElementById('menuScreen').style.display = 'flex';">← Back</button>
         <div class="treasure-hunt-container">
             <h2>Treasure Hunt 🗝️</h2>
-            <div class="puzzle-container">
-                <div class="puzzle-grid" id="puzzleGrid"></div>
-            </div>
-            <p class="hint">Coming soon! 💝</p>
+            <p style="text-align: center; color: #666; margin-top: 50px;">Coming soon! 💝</p>
         </div>
     </div>
 
     <!-- Quiz Screen -->
     <div id="quizScreen" class="screen">
-        <button class="back-btn" onclick="backToMenu('quizScreen')">← Back</button>
+        <button class="back-btn" onclick="document.getElementById('quizScreen').style.display = 'none'; document.getElementById('menuScreen').style.display = 'flex';">← Back</button>
         <div class="quiz-container">
             <h2>Quiz &lt;3</h2>
-            <div class="quiz-content">
-                <p style="text-align: center; color: #666;">Coming soon! 💝</p>
-            </div>
+            <p style="text-align: center; color: #666; margin-top: 50px;">Coming soon! 💝</p>
         </div>
     </div>
 
     <!-- Gallery Screen -->
     <div id="galleryScreen" class="screen">
-        <button class="back-btn" onclick="backToMenu('galleryScreen')">← Back</button>
+        <button class="back-btn" onclick="document.getElementById('galleryScreen').style.display = 'none'; document.getElementById('menuScreen').style.display = 'flex';">← Back</button>
         <div class="gallery-container">
             <h2>Gallery ✨</h2>
             <div class="gallery-grid">
@@ -186,19 +130,19 @@
 
     <!-- Art Area Screen -->
     <div id="artScreen" class="screen">
-        <button class="back-btn" onclick="backToMenu('artScreen')">← Back</button>
+        <button class="back-btn" onclick="document.getElementById('artScreen').style.display = 'none'; document.getElementById('menuScreen').style.display = 'flex';">← Back</button>
         <div class="art-container">
             <h2>Art Area 🎨</h2>
-            <p style="text-align: center; color: #666;">Coming soon! 💝</p>
+            <p style="text-align: center; color: #666; margin-top: 50px;">Coming soon! 💝</p>
         </div>
     </div>
 
     <!-- Message Area Screen -->
     <div id="messageScreen" class="screen">
-        <button class="back-btn" onclick="backToMenu('messageScreen')">← Back</button>
+        <button class="back-btn" onclick="document.getElementById('messageScreen').style.display = 'none'; document.getElementById('menuScreen').style.display = 'flex';">← Back</button>
         <div class="message-container">
             <h2>Message Area 💌</h2>
-            <p style="text-align: center; color: #666;">Coming soon! 💝</p>
+            <p style="text-align: center; color: #666; margin-top: 50px;">Coming soon! 💝</p>
         </div>
     </div>
 
