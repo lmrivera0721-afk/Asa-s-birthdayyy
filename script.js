@@ -121,7 +121,7 @@ function initializeEventListeners() {
 // Popup Function
 function showPopup(message, type = 'normal') {
     const popup = document.getElementById('popup');
-    popup.innerHTML = `<p>${message}<\/p>`;
+    popup.innerHTML = `<p>${message}</p>`;
     popup.className = `popup show ${type}`;
     
     setTimeout(() => {
@@ -417,7 +417,7 @@ function loadMessages() {
     messagesDisplay.innerHTML = '';
 
     if (messages.length === 0) {
-        messagesDisplay.innerHTML = '<p style="color: #999; text-align: center;">No messages yet. Be the first to write one! 💕<\/p>';
+        messagesDisplay.innerHTML = '<p style="color: #999; text-align: center;">No messages yet. Be the first to write one! 💕</p>';
         return;
     }
 
@@ -425,8 +425,8 @@ function loadMessages() {
         const messageBox = document.createElement('div');
         messageBox.className = 'message-box';
         messageBox.innerHTML = `
-            <p><strong>${msg.timestamp}<\/strong><\/p>
-            <p>${msg.text}<\/p>
+            <p><strong>${msg.timestamp}</strong></p>
+            <p>${msg.text}</p>
         `;
         messagesDisplay.appendChild(messageBox);
     });
