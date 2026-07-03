@@ -1,152 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Asa 💕</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- Envelope Screen -->
-    <div id="envelopeScreen" class="screen active">
-        <div class="envelope-container">
-            <div class="envelope">
-                <div class="envelope-back"></div>
-                <div class="envelope-front"></div>
-                <div class="envelope-flap"></div>
-                <div class="wax-seal" onclick="alert('Clicked!'); document.querySelector('.envelope').classList.add('open'); setTimeout(function() { document.getElementById('envelopeScreen').style.display = 'none'; document.getElementById('letterScreen').style.display = 'flex'; }, 600);">
-                    <div class="wax-seal-inner"></div>
-                </div>
-                <div class="bubble-text">
-                    <span>Open me!</span>
-                </div>
-            </div>
-        </div>
-        <div class="stars-background">
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-        </div>
-    </div>
-
-    <!-- Letter Screen -->
-    <div id="letterScreen" class="screen">
-        <button class="close-letter" onclick="document.getElementById('letterScreen').style.display = 'none'; document.getElementById('menuScreen').style.display = 'flex'; document.querySelector('.envelope').classList.remove('open');">✕</button>
-        <div class="letter-container">
-            <div class="letter">
-                <div class="letter-content">
-                    <p>Dear Asa,</p>
-                    <p>Happy birthday to the love of my life, (if everything went as planned, you're hopefully seeing this at 12 am) so if you are seeing this at 12, I hope you have the most amazing birthday, I love you so much, I can't wait to see you later and give you all the love and kisses.&lt;3</p>
-                    <p>If you're not seeing this at 12, I hope you're having an amazing day, and I still can't wait to see your handsome face later.</p>
-                    <p>I hope you know how much I love and cherish you, I was blessed to have you in my life as my friend and now I'm even more blessed to call you mine. You're an amazing person inside and out and I truly couldn't ask for someone better, you make me the happiest I've ever been and I can't wait to spend my life with you.</p>
-                    <p>Happy birthday, my love, this day will always be my favorite because it's why I have you now, and I will never let you go.</p>
-                    <p class="signature">With all my love,<br>Your love 💕</p>
-                </div>
-                <div class="hearts-decoration">
-                    <span class="heart">♥</span>
-                    <span class="heart">♥</span>
-                    <span class="heart">♥</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Menu Screen -->
-    <div id="menuScreen" class="screen">
-        <div class="menu-container">
-            <div class="menu-options">
-                <div class="menu-item" onclick="document.getElementById('menuScreen').style.display = 'none'; document.getElementById('treasureHuntScreen').style.display = 'flex';">
-                    <h3>Treasure Hunt</h3>
-                    <p>a small treasure hunt with a prize at the end &lt;3</p>
-                </div>
-                <div class="menu-item" onclick="document.getElementById('menuScreen').style.display = 'none'; document.getElementById('quizScreen').style.display = 'flex';">
-                    <h3>Quiz &lt;3</h3>
-                    <p>A quiz for you, to show you how much I love you &lt;3</p>
-                </div>
-                <div class="menu-item" onclick="document.getElementById('menuScreen').style.display = 'none'; document.getElementById('galleryScreen').style.display = 'flex';">
-                    <h3>Gallery</h3>
-                    <p>Memories we've made together ✨</p>
-                </div>
-                <div class="menu-item" onclick="document.getElementById('menuScreen').style.display = 'none'; document.getElementById('artScreen').style.display = 'flex';">
-                    <h3>Art Area</h3>
-                    <p>Express your creativity 🎨</p>
-                </div>
-                <div class="menu-item" onclick="document.getElementById('menuScreen').style.display = 'none'; document.getElementById('messageScreen').style.display = 'flex';">
-                    <h3>Message Area</h3>
-                    <p>Leave me a message 💌</p>
-                </div>
-            </div>
-        </div>
-        <div class="background-decoration">
-            <span class="heart">♥</span>
-            <span class="star">★</span>
-            <span class="heart">♥</span>
-            <span class="star">★</span>
-        </div>
-    </div>
-
-    <!-- Treasure Hunt Screen -->
-    <div id="treasureHuntScreen" class="screen">
-        <button class="back-btn" onclick="document.getElementById('treasureHuntScreen').style.display = 'none'; document.getElementById('menuScreen').style.display = 'flex';">← Back</button>
-        <div class="treasure-hunt-container">
-            <h2>Treasure Hunt 🗝️</h2>
-            <p style="text-align: center; color: #666; margin-top: 50px;">Coming soon! 💝</p>
-        </div>
-    </div>
-
-    <!-- Quiz Screen -->
-    <div id="quizScreen" class="screen">
-        <button class="back-btn" onclick="document.getElementById('quizScreen').style.display = 'none'; document.getElementById('menuScreen').style.display = 'flex';">← Back</button>
-        <div class="quiz-container">
-            <h2>Quiz &lt;3</h2>
-            <p style="text-align: center; color: #666; margin-top: 50px;">Coming soon! 💝</p>
-        </div>
-    </div>
-
-    <!-- Gallery Screen -->
-    <div id="galleryScreen" class="screen">
-        <button class="back-btn" onclick="document.getElementById('galleryScreen').style.display = 'none'; document.getElementById('menuScreen').style.display = 'flex';">← Back</button>
-        <div class="gallery-container">
-            <h2>Gallery ✨</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">🖼️<br>Photo Spot 1</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">🖼️<br>Photo Spot 2</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">🖼️<br>Photo Spot 3</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">🖼️<br>Photo Spot 4</div>
-                </div>
-            </div>
-            <p class="gallery-note">You can add your favorite photos here! 📸</p>
-        </div>
-    </div>
-
-    <!-- Art Area Screen -->
-    <div id="artScreen" class="screen">
-        <button class="back-btn" onclick="document.getElementById('artScreen').style.display = 'none'; document.getElementById('menuScreen').style.display = 'flex';">← Back</button>
-        <div class="art-container">
-            <h2>Art Area 🎨</h2>
-            <p style="text-align: center; color: #666; margin-top: 50px;">Coming soon! 💝</p>
-        </div>
-    </div>
-
-    <!-- Message Area Screen -->
-    <div id="messageScreen" class="screen">
-        <button class="back-btn" onclick="document.getElementById('messageScreen').style.display = 'none'; document.getElementById('menuScreen').style.display = 'flex';">← Back</button>
-        <div class="message-container">
-            <h2>Message Area 💌</h2>
-            <p style="text-align: center; color: #666; margin-top: 50px;">Coming soon! 💝</p>
-        </div>
-    </div>
-
-    <!-- Popup Notifications -->
-    <div id="popup" class="popup"></div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>Asa&#39;s Birthday</title>
+    <meta name="description" content="Asa&#39;s Birthday — built on Replit. Update this description to reflect the app." />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Asa&#39;s Birthday" />
+    <meta property="og:description" content="Asa&#39;s Birthday — built on Replit. Update this description to reflect the app." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Asa&#39;s Birthday" />
+    <meta name="twitter:description" content="Asa&#39;s Birthday — built on Replit. Update this description to reflect the app." />
+    <link rel="icon" type="image/svg+xml" href="/Asa-s-birthdayyy/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/Asa-s-birthdayyy/assets/index-Cdab9TL6.js"></script>
+    <link rel="stylesheet" crossorigin href="/Asa-s-birthdayyy/assets/index-CXoirPIl.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>
