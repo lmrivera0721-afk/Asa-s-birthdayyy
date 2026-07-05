@@ -3,23 +3,246 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Asa&#39;s Birthday</title>
-    <meta name="description" content="Asa&#39;s Birthday — built on Replit. Update this description to reflect the app." />
+    <title>Asa's Birthday</title>
+    <meta name="description" content="Asa's Birthday — a little love letter website." />
     <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="Asa&#39;s Birthday" />
-    <meta property="og:description" content="Asa&#39;s Birthday — built on Replit. Update this description to reflect the app." />
+    <meta property="og:title" content="Asa's Birthday" />
+    <meta property="og:description" content="Asa's Birthday — a little love letter website." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Asa&#39;s Birthday" />
-    <meta name="twitter:description" content="Asa&#39;s Birthday — built on Replit. Update this description to reflect the app." />
+    <meta name="twitter:title" content="Asa's Birthday" />
+    <meta name="twitter:description" content="Asa's Birthday — a little love letter website." />
     <link rel="icon" type="image/svg+xml" href="/Asa-s-birthdayyy/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/Asa-s-birthdayyy/assets/index-Cdab9TL6.js"></script>
-    <link rel="stylesheet" crossorigin href="/Asa-s-birthdayyy/assets/index-CXoirPIl.css">
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --pink-light: #fff0f5;
+        --pink-mid:   #ffd6e7;
+        --pink-deep:  #f9a8c9;
+        --pink-hot:   #e8528a;
+        --rose:       #c2185b;
+        --text:       #3d1a2e;
+        --muted:      #8c5575;
+        --card-bg:    #fff8fb;
+        --border:     #f5c2d8;
+        --radius:     18px;
+      }
+
+      body {
+        font-family: 'Inter', system-ui, -apple-system, 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif;
+        background: linear-gradient(160deg, #fff0f5 0%, #ffe8f3 40%, #fce4f5 100%);
+        min-height: 100vh;
+        color: var(--text);
+        overflow-x: hidden;
+      }
+
+      /* ── Floating background shapes ─────────────────────────── */
+      .bg-shapes-layer {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+      .bg-shape {
+        position: absolute;
+        opacity: 0.18;
+        animation: floatUp linear infinite;
+        color: var(--pink-hot);
+        user-select: none;
+      }
+      @keyframes floatUp {
+        0%   { transform: translateY(0) rotate(0deg);   opacity: 0.18; }
+        10%  { opacity: 0.22; }
+        90%  { opacity: 0.18; }
+        100% { transform: translateY(-110vh) rotate(25deg); opacity: 0; }
+      }
+
+      /* ── Page wrapper ────────────────────────────────────────── */
+      .page {
+        position: relative;
+        z-index: 1;
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 48px 20px 80px;
+      }
+
+      /* ── Header ──────────────────────────────────────────────── */
+      .hero {
+        text-align: center;
+        margin-bottom: 48px;
+      }
+      .hero-emoji { font-size: 52px; display: block; margin-bottom: 8px; }
+      .hero h1 {
+        font-size: clamp(1.8rem, 5vw, 2.6rem);
+        font-weight: 700;
+        color: var(--rose);
+        letter-spacing: -0.5px;
+        line-height: 1.2;
+      }
+      .hero p {
+        margin-top: 10px;
+        font-size: 1rem;
+        color: var(--muted);
+        max-width: 440px;
+        margin-inline: auto;
+        line-height: 1.6;
+      }
+
+      /* ── Section title ───────────────────────────────────────── */
+      .section-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--rose);
+        text-align: center;
+        margin-bottom: 20px;
+        letter-spacing: 0.01em;
+      }
+      .section-title span {
+        background: var(--pink-mid);
+        padding: 4px 14px;
+        border-radius: 999px;
+      }
+
+      /* ── Situation cards grid ────────────────────────────────── */
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 14px;
+        margin-bottom: 40px;
+      }
+
+      .situation-card {
+        background: var(--card-bg);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius);
+        padding: 18px 20px;
+        cursor: pointer;
+        transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        user-select: none;
+      }
+      .situation-card:hover {
+        border-color: var(--pink-hot);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(232, 82, 138, 0.12);
+      }
+      .situation-card:active { transform: translateY(0); }
+      .situation-card.active {
+        border-color: var(--pink-hot);
+        background: #fff2f8;
+      }
+
+      .card-icon {
+        font-size: 28px;
+        flex-shrink: 0;
+        line-height: 1;
+      }
+      .card-label {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--text);
+        line-height: 1.3;
+      }
+      .card-sublabel {
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+
+      /* ── Message reveal panel ────────────────────────────────── */
+      .message-panel {
+        background: var(--card-bg);
+        border: 2px solid var(--pink-hot);
+        border-radius: var(--radius);
+        padding: 28px 26px;
+        margin-top: 8px;
+        display: none;
+        animation: popIn 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .message-panel.visible { display: block; }
+
+      @keyframes popIn {
+        from { opacity: 0; transform: scale(0.95) translateY(6px); }
+        to   { opacity: 1; transform: scale(1)    translateY(0);   }
+      }
+
+      .message-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+      .message-header-icon { font-size: 30px; }
+      .message-header-title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--rose);
+      }
+
+      .message-body {
+        font-size: 0.96rem;
+        line-height: 1.75;
+        color: var(--text);
+      }
+      .message-body p + p { margin-top: 12px; }
+
+      .close-btn {
+        display: inline-block;
+        margin-top: 20px;
+        font-size: 0.82rem;
+        color: var(--muted);
+        cursor: pointer;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 4px 14px;
+        transition: background 0.15s, color 0.15s;
+      }
+      .close-btn:hover { background: var(--pink-mid); color: var(--rose); }
+
+      /* ── Divider ─────────────────────────────────────────────── */
+      .divider {
+        text-align: center;
+        font-size: 1.3rem;
+        color: var(--pink-deep);
+        margin: 36px 0 28px;
+        letter-spacing: 6px;
+      }
+
+      /* ── Always-visible love note ────────────────────────────── */
+      .love-note {
+        background: var(--pink-light);
+        border: 1.5px solid var(--pink-mid);
+        border-radius: var(--radius);
+        padding: 24px 24px;
+        text-align: center;
+        color: var(--text);
+        font-size: 0.95rem;
+        line-height: 1.75;
+      }
+      .love-note .note-heart {
+        font-size: 2rem;
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      /* ── Responsive tweaks ───────────────────────────────────── */
+      @media (max-width: 420px) {
+        .page { padding: 32px 14px 60px; }
+        .cards-grid { grid-template-columns: 1fr; }
+        .message-panel { padding: 22px 18px; }
+      }
+    </style>
   </head>
   <body>
+
+    <!-- Floating background shapes (unchanged from original) -->
     <div class="bg-shapes-layer" aria-hidden="true">
       <span class="bg-shape heart" style="left:4%;font-size:20px;animation-duration:18s;animation-delay:0s;bottom:-20px">&#x2665;</span>
       <span class="bg-shape star" style="left:10%;font-size:16px;animation-duration:22s;animation-delay:3s;bottom:-20px">&#x2605;</span>
@@ -43,6 +266,239 @@
       <span class="bg-shape star-sm" style="left:77%;font-size:11px;animation-duration:23s;animation-delay:5.5s;bottom:-20px">&#x2726;</span>
       <span class="bg-shape heart" style="left:90%;font-size:19px;animation-duration:20s;animation-delay:2s;bottom:-20px">&#x2665;</span>
     </div>
-    <div id="root"></div>
+
+    <div class="page">
+
+      <!-- Hero -->
+      <div class="hero">
+        <span class="hero-emoji">🎂</span>
+        <h1>Happy Birthday, Asa ♡</h1>
+        <p>On days when your heart feels heavy, open one of these. Every single message was written just for you.</p>
+      </div>
+
+      <!-- Message Center -->
+      <div class="section-title"><span>💌 Message Center</span></div>
+      <p style="text-align:center;color:var(--muted);font-size:0.88rem;margin-bottom:22px;line-height:1.6;">
+        Tap whichever one you're feeling right now.
+      </p>
+
+      <div class="cards-grid" id="cardsGrid">
+
+        <div class="situation-card" data-id="ugly">
+          <span class="card-icon">🪞</span>
+          <div>
+            <div class="card-label">When you feel ugly</div>
+            <div class="card-sublabel">or like you're not pretty enough</div>
+          </div>
+        </div>
+
+        <div class="situation-card" data-id="annoying">
+          <span class="card-icon">😔</span>
+          <div>
+            <div class="card-label">When you feel annoying</div>
+            <div class="card-sublabel">or too much to handle</div>
+          </div>
+        </div>
+
+        <div class="situation-card" data-id="clingy">
+          <span class="card-icon">🫂</span>
+          <div>
+            <div class="card-label">When you feel too clingy</div>
+            <div class="card-sublabel">or like you need too much</div>
+          </div>
+        </div>
+
+        <div class="situation-card" data-id="notenough">
+          <span class="card-icon">💔</span>
+          <div>
+            <div class="card-label">When you feel not enough</div>
+            <div class="card-sublabel">or like you fall short</div>
+          </div>
+        </div>
+
+        <div class="situation-card" data-id="burden">
+          <span class="card-icon">🌧️</span>
+          <div>
+            <div class="card-label">When you feel like a burden</div>
+            <div class="card-sublabel">or like you're in the way</div>
+          </div>
+        </div>
+
+        <div class="situation-card" data-id="unloved">
+          <span class="card-icon">🌸</span>
+          <div>
+            <div class="card-label">When you feel unloved</div>
+            <div class="card-sublabel">or forgotten or unimportant</div>
+          </div>
+        </div>
+
+        <div class="situation-card" data-id="overthinking">
+          <span class="card-icon">🌀</span>
+          <div>
+            <div class="card-label">When you're overthinking</div>
+            <div class="card-sublabel">and your brain won't stop</div>
+          </div>
+        </div>
+
+        <div class="situation-card" data-id="sad">
+          <span class="card-icon">🌙</span>
+          <div>
+            <div class="card-label">When you just feel sad</div>
+            <div class="card-sublabel">for no reason at all</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Message panel (shown when a card is clicked) -->
+      <div class="message-panel" id="messagePanel">
+        <div class="message-header">
+          <span class="message-header-icon" id="msgIcon"></span>
+          <div class="message-header-title" id="msgTitle"></div>
+        </div>
+        <div class="message-body" id="msgBody"></div>
+        <span class="close-btn" id="closeBtn">close ✕</span>
+      </div>
+
+      <div class="divider">♡ · ♡ · ♡</div>
+
+      <!-- Always-visible love note -->
+      <div class="love-note">
+        <span class="note-heart">💛</span>
+        No matter which card you opened, or whether you opened any at all —
+        you are so deeply loved, exactly as you are, exactly as you show up.
+        Being born was already the best thing that ever happened to this world.
+        <br><br>
+        <strong>Happy birthday, Asa. I love you.</strong>
+      </div>
+
+    </div><!-- /.page -->
+
+    <script>
+      const messages = {
+        ugly: {
+          icon: "🪞",
+          title: "When you feel ugly",
+          body: `
+            <p>I want you to stop for a second and actually hear this: you are genuinely, breathtakingly beautiful. Not in a "everyone is beautiful in their own way" kind of dismissal — I mean it specifically about <em>you</em>.</p>
+            <p>The way you look? I think about it all the time. Your face, your eyes, the way you carry yourself — none of that is ordinary. You are the kind of person people notice when you walk into a room, even when you don't believe it yourself.</p>
+            <p>On the days your reflection lies to you, please come back here. The mirror is wrong. I'm not.</p>
+          `
+        },
+        annoying: {
+          icon: "😔",
+          title: "When you feel annoying",
+          body: `
+            <p>You are not annoying. You are expressive. You care a lot, and you want to be understood, and that is not a flaw — that is one of the things I love most about you.</p>
+            <p>The people worth keeping in your life will never find you too much. And the ones who make you feel like you're "a lot"? They're just not used to someone who actually feels things deeply and says so out loud.</p>
+            <p>Your presence is not an inconvenience. It's a gift. Please don't shrink yourself to fit into spaces that were too small for you to begin with.</p>
+          `
+        },
+        clingy: {
+          icon: "🫂",
+          title: "When you feel too clingy",
+          body: `
+            <p>Wanting closeness is not a character flaw. Wanting to feel connected, to know that someone is still there, to reach out — that is just love. That is just human.</p>
+            <p>You don't need "too little" of yourself. You need someone who has enough room in their heart to hold all of you. And I do.</p>
+            <p>Never apologize for wanting to be close to the people you love. That is a beautiful thing about you — don't let anyone make you feel ashamed of it.</p>
+          `
+        },
+        notenough: {
+          icon: "💔",
+          title: "When you feel not enough",
+          body: `
+            <p>You are not a project that needs to be finished before you deserve love. You are not a draft. You don't need to earn your place or prove your worth before someone is allowed to care about you.</p>
+            <p>You are already enough. Not "enough for someone who tries hard" — just enough. Full stop. As you are, right now, today.</p>
+            <p>If someone has ever made you feel otherwise, that says everything about their limitations and absolutely nothing about your value. You were always enough. You always will be.</p>
+          `
+        },
+        burden: {
+          icon: "🌧️",
+          title: "When you feel like a burden",
+          body: `
+            <p>The people who love you don't experience you as a burden. They experience you as the reason they show up. There is a difference — a big one.</p>
+            <p>When you reach out, when you need someone, when you're having a hard day — that is not an imposition. That is trust. And trust is precious. It means you feel safe enough to be real with someone, and that is the deepest form of connection there is.</p>
+            <p>You are not too heavy. You are not too hard to love. Please don't disappear just to make it easier for everyone else — we need you here.</p>
+          `
+        },
+        unloved: {
+          icon: "🌸",
+          title: "When you feel unloved",
+          body: `
+            <p>You are loved. Even on the quiet days when no one has said it out loud. Even when it feels distant or uncertain. Even right now, in this moment, as you read this.</p>
+            <p>There are people in your life who think about you when you're not around. Who smile at something that reminded them of you. Who are glad you exist. I am one of them.</p>
+            <p>Feelings can lie to us — especially the loud, scary ones. But here is something true: you matter to more people than you know. You are thought of. You are wanted. You are loved.</p>
+          `
+        },
+        overthinking: {
+          icon: "🌀",
+          title: "When you're overthinking",
+          body: `
+            <p>Hey. Stop. Breathe. Whatever story your brain is spinning right now — the one where you did something wrong, or someone is upset, or everything is about to fall apart — it is almost certainly not true.</p>
+            <p>Your mind is trying to protect you by preparing for every bad outcome. That's kindness, in a clumsy way. But it's not reality. The worst-case scenario you've rehearsed a hundred times tonight? It's probably not happening.</p>
+            <p>You are safe. You are okay. Come back to right now — this breath, this moment. You don't have to solve everything tonight. Just rest. The rest can wait.</p>
+          `
+        },
+        sad: {
+          icon: "🌙",
+          title: "When you just feel sad",
+          body: `
+            <p>You don't have to have a reason. Sadness doesn't owe you an explanation, and you don't owe anyone a justification for feeling it. It's okay to just be sad sometimes.</p>
+            <p>Let yourself feel it. Don't fight it or rush through it. Sit with it, cry if you need to, eat something cozy, put on something soft to watch. You are allowed to have hard days.</p>
+            <p>And on the other side of this — and there is always an other side — I'll still be here. You are not alone in it, even when it feels that way. I love you on the sad days just as much as every other day. Maybe even a little more.</p>
+          `
+        }
+      };
+
+      const panel    = document.getElementById('messagePanel');
+      const msgIcon  = document.getElementById('msgIcon');
+      const msgTitle = document.getElementById('msgTitle');
+      const msgBody  = document.getElementById('msgBody');
+      const closeBtn = document.getElementById('closeBtn');
+      let activeCard = null;
+
+      document.getElementById('cardsGrid').addEventListener('click', function(e) {
+        const card = e.target.closest('.situation-card');
+        if (!card) return;
+        const id = card.dataset.id;
+        const data = messages[id];
+        if (!data) return;
+
+        // Deactivate previous
+        if (activeCard) activeCard.classList.remove('active');
+
+        // If same card clicked again, close
+        if (activeCard === card) {
+          activeCard = null;
+          panel.classList.remove('visible');
+          return;
+        }
+
+        // Activate
+        activeCard = card;
+        card.classList.add('active');
+
+        // Fill panel
+        msgIcon.textContent  = data.icon;
+        msgTitle.textContent = data.title;
+        msgBody.innerHTML    = data.body;
+
+        // Show panel
+        panel.classList.remove('visible');
+        void panel.offsetWidth; // force reflow for animation
+        panel.classList.add('visible');
+
+        // Scroll to panel
+        setTimeout(() => {
+          panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 50);
+      });
+
+      closeBtn.addEventListener('click', function() {
+        panel.classList.remove('visible');
+        if (activeCard) { activeCard.classList.remove('active'); activeCard = null; }
+      });
+    </script>
+
   </body>
 </html>
