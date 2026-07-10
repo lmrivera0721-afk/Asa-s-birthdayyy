@@ -76,5 +76,59 @@
         <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
       </svg>
     </a>
+  
+    <div
+      id="photo-lightbox"
+      style="
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.85);
+        z-index: 10000;
+        align-items: center;
+        justify-content: center;
+        cursor: zoom-out;
+      "
+    >
+      <img
+        id="photo-lightbox-img"
+        src=""
+        alt="Enlarged photo"
+        style="max-width: 92vw; max-height: 92vh; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);"
+      />
+    </div>
+    <script>
+      (function () {
+        var overlay = document.getElementById('photo-lightbox');
+        var overlayImg = document.getElementById('photo-lightbox-img');
+
+        function openLightbox(src) {
+          overlayImg.src = src;
+          overlay.style.display = 'flex';
+        }
+
+        function closeLightbox() {
+          overlay.style.display = 'none';
+          overlayImg.src = '';
+        }
+
+        overlay.addEventListener('click', closeLightbox);
+
+        document.addEventListener('click', function (e) {
+          var target = e.target;
+          if (target && target.classList && target.classList.contains('album-photo-img')) {
+            openLightbox(target.src);
+          }
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') closeLightbox();
+        });
+
+        var style = document.createElement('style');
+        style.textContent = '.album-photo-img { cursor: zoom-in; }';
+        document.head.appendChild(style);
+      })();
+    </script>
   </body>
 </html>
